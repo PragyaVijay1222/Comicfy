@@ -1,0 +1,10 @@
+torch==2.0.1+cu118         # PyTorch for model integration
+diffusers==0.16.1          # Stable Diffusion pipeline
+transformers==4.30.0       # Hugging Face Transformers for NLP
+spacy==3.5.0               # NLP script parsing
+Pillow==9.4.0              # Image processing (speech bubbles, layout)
+opencv-python              # Panel layout optimization
+numpy==1.24.0              # Numerical computations
+flask==3.0.3               # Backend framework for serving the application
+gunicorn==20.1.0           # Deployment server
+Werkzeug==3.0.3
