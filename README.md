@@ -1,15 +1,15 @@
 # Comicfy - AI-Driven Comic Creator 🎨🤖
+> **Transform your text into dynamic comic panels using generative AI!**
 
-Comicfy is an innovative application that leverages generative AI techniques and NLP to transform small stories into visually engaging comic panels. By combining state-of-the-art text-to-image generation models and layout optimization tools, Comicfy delivers an end-to-end comic creation experience.
+This project leverages state-of-the-art AI technologies, including Stable Diffusion and Natural Language Processing (NLP), to create comic panels from a user-provided script. The intuitive interface and seamless backend integration allow users to generate stunning visual narratives in seconds.
 
 ---
 
 ## 🚀 Features
-- **Story-to-Comic Conversion**: Generate multiple comic panels based on user-provided story chunks.
-- **NLP-Powered Text Parsing**: Automatically break down user stories into meaningful segments using SpaCy.
-- **Image Generation**: Create high-quality images with Diffusers and the Stable Diffusion model.
-- **Speech Bubble Integration**: Add dialogue or captions to panels seamlessly.
-- **Panel Layout Optimization**: Arrange panels for a fluid storytelling experience.
+- **Converts user-input scripts into visually compelling comic panels.**
+- **Automatically parses scripts into individual scenes using NLP techniques.**
+- **Dynamically generates corresponding images for each scene with Stable Diffusion.**
+- **Fully customizable pipeline for text-to-image generation.**
 
 ---
 
@@ -17,24 +17,22 @@ Comicfy is an innovative application that leverages generative AI techniques and
 Below is the hierarchy of the project directory:
 
 ```
-Comicfy/
-├── README.md               # Project documentation
-├── requirements.txt        # Dependencies
-├── frontend/               # Frontend files
-│   ├── index.html          # HTML structure
-│   ├── style.css           # Styling
-│   └── script.js           # JavaScript logic
-├── backend/                # Backend files
-│   ├── app.py              # Flask application
-│   ├── assets/             # Static assets like images or models
-│   ├── comic_generator.py  # Core image generation logic
-│   ├── nlp_parser.py       # Story segmentation
-│   ├── panel_layout.py     # Panel arrangement logic
-│   ├── speech_bubbles.py   # Speech bubble placement
-│   └── utils.py            # Utility scripts
-├── datasets/               # Dataset files
-│   ├── preprocesses_data/  # Preprocessed data for training
-│   └── training_data/      # Training data for Stable Diffusion or other models
+📦 AI-Driven Comic Creator
+├── backend/                     # Backend logic
+│   ├── app.py                   # Flask application
+│   ├── comic_generator.py       # Stable Diffusion integration
+│   ├── nlp_parser.py            # NLP script parser
+│   ├── requirements.txt         # Python dependencies
+│   └── assets/                  # Generated assets
+│       ├── sample_scripts/      # Example scripts for testing
+│       └── generated_panels/    # Generated comic panels
+├── frontend/                    # Frontend logic
+│   ├── index.html               # Main HTML file
+│   ├── styles.css               # Styling for the web interface
+│   ├── script.js                # Client-side JavaScript logic
+├── datasets/                    # Dataset files
+│   ├── preprocesses_data/       # Preprocessed data for training
+│   └── training_data/           # Training data for Stable Diffusion or other models
 ```
 
 ---
@@ -42,41 +40,40 @@ Comicfy/
 ## 💻 Installation and Usage
 Follow these steps to clone the repository and set up the project on your local system:
 
-1. **Clone the Repository**:
+1. **Clone the Repository**
    ```bash
    git clone https://github.com/your-username/comicfy.git
    cd comicfy
    ```
 
-2. **Create a Virtual Environment** (Optional but Recommended):
+2. **Set Up the Backend**
+    *Navigate to the `backend/` directory*: 
    ```bash
-   python -m venv venv
-   source venv/bin/activate  # On Windows: venv\Scripts\activate
+   cd backend
    ```
-
-3. **Install Dependencies**:
-   Make sure you have Python 3.8+ and GPU CUDA support. Run:
+    *Install Python dependencies*: 
    ```bash
    pip install -r requirements.txt
    ```
-
-4. **Download Pretrained Models**:
-   Place the `runwayml/stable-diffusion-v1-5` model files in the `backend/assets` directory. Update paths in `comic_generator.py` as needed.
-
-5. **Run the Backend**:
-   Start the Flask app:
+    *Download the Stable Diffusion model weights (use your preferred provider or Hugging Face)*:
    ```bash
-   python backend/app.py
+   python -m diffusers.pipelines.stable_diffusion.download --model runwayml/stable-diffusion-v1-5
+   ```
+    *Run the Flask server*: 
+   ```bash
+   python app.py
    ```
 
-6. **Run the Frontend**:
-   Open `frontend/index.html` in your browser or host it locally.
+3. **Set Up the Frontend**
+    *Open the `index.html` file in your browser*:
+   ```bash
+   frontend/index.html
+   ```
 
-7. **Test the Workflow**:
-   - Input a small story into the frontend interface.
-   - The NLP parser will segment the story.
-   - The Comic Generator will create images based on the parsed chunks.
-   - Speech bubbles and panels will be finalized for download.
+4. **Test the Application**:
+   
+    *Input your comic script in the text box and click "Generate Comic"*.
+    *Generated comic panels will appear dynamically on the page and be saved in the `backend/assets/generated_panels/` directory*.
 
 ---
 
@@ -92,10 +89,23 @@ Listed in `requirements.txt`:
 - `flask==3.0.3`               # Backend framework for serving the application
 - `Werkzeug==3.0.3`
 
-Ensure a CUDA-enabled GPU for optimal performance.
-
 ---
 
+## 💉 Requirements
+Make sure the following are installed on your system:
+- `Python 3.8+` 
+- `pip` (Python package manager)
+- A `CUDA` enabled GPU (for faster image generation)
+  
+---
+
+## 🪛 How It Works
+- **Input Script**: The user inputs a script describing the comic's scenes in natural language.
+- **NLP Parsing**: The backend parses the script into individual scenes using NLP techniques (`nlp_parser.py`).
+- **Image Generation**: Each scene is passed to Stable Diffusion to create an image (`comic_generator.py`).
+- **Frontend Display**: The generated panels are displayed dynamically on the webpage.
+  
+---
 ## 📜 Future Enhancements
 -It's still a work in progress with just the frontend remaining.
 - Embed demonstration videos and sample images of generated comic panels.
